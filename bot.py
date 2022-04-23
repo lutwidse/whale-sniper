@@ -12,7 +12,7 @@ def update_transactions():
     ws.extract_bids()
 
 HELP_TEXT = (
-    "This bot is still in development. alert might be reset by some reason. \n"
+    "This bot is still in development. alert might be reset for some reason. \n"
     "/whale - Get latest whales bid. \n"
     "/alert - Set /whale notification every 1 hour. \n"
     "/unalert - Unset alert."
