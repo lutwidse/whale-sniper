@@ -45,7 +45,9 @@ def set_whale_alert(update: Update, context: CallbackContext) -> None:
     context.job_queue.run_repeating(whale_alert, interval=60*60, context=chat_id, name=str(chat_id))
 
     if job_removed:
-        update.message.reply_text("Reset whale alert.")
+        update.message.reply_text("Alert has been reset.")
+    else:
+        update.message.reply_text("Alert has been set.")
 
 def unset_whale_alert(update: Update, context: CallbackContext) -> None:
     chat_id = update.message.chat_id
