@@ -1,0 +1,1 @@
+from .whale_sniper import WhaleSniper

@@ -1,0 +1,12 @@
+version: "3.7"
+
+services:
+  whale_sniper:
+    container_name: whale-sniper
+    build:
+      context: .
+      dockerfile: ./dockerfile
+    environment:
+       - TOKEN=${TOKEN}
+    restart: always
+    tty: true
