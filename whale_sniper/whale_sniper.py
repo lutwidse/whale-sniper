@@ -12,8 +12,11 @@ class WhaleSniper:
     def __init__(self):
         self.transactions = []
         self.bids = []
-        self.fieldnames = ["timestamp", "sender", "amount", "premium_slot", "strategy_activate_ltv", "strategy_activate_amount"]
-    
+
+    def init(self):
+        self.transactions = []
+        self.bids = []
+
     def get_transactions(self):
         with open("whale_sniper/whale.txt", "r") as f:
             for w in f.readlines():
@@ -61,7 +64,7 @@ class WhaleSniper:
     def extract_bids(self):
         sorted_bids = sorted(self.bids, key=lambda t: datetime.strptime(t[0], "%Y-%m-%d %H:%M:%S%z"), reverse=True)
         with open("whale_sniper/whale_bot.csv", "w") as csvfile:
-            writer = csv.DictWriter(csvfile, fieldnames=self.fieldnames)
+            writer = csv.DictWriter(csvfile, fieldnames=["timestamp", "sender", "amount", "premium_slot", "strategy_activate_ltv", "strategy_activate_amount"])
             writer.writeheader()
             for i in sorted_bids:
                 writer.writerow({

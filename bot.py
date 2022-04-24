@@ -10,6 +10,7 @@ def update_transactions():
     ws.get_transactions()
     ws.get_bids()
     ws.extract_bids()
+    ws.__init()
 
 HELP_TEXT = (
     "This bot is still in development. alert might be reset for some reason. \n"
