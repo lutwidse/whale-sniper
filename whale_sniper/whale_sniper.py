@@ -6,7 +6,7 @@ TERRA_API = "https://fcd.terra.dev/"
 TXS_API = TERRA_API + "v1/txs?limit=100&account="
 
 ALPHA_DEFI_API = "https://api.alphadefi.fund/"
-LIQUIDATION_API = ALPHA_DEFI_API + "historical/kujira/profiles/?datetime="
+LIQUIDATION_API = ALPHA_DEFI_API + "historical/kujira/profile"
 
 KUJIRA_ORCA_AUST_VAULT = "terra13nk2cjepdzzwfqy740pxzpe3x75pd6g0grxm2z"
 BLUNA = "terra1kc87mu460fwkqte29rquh4hc20m54fxwtsx7gp"
@@ -83,8 +83,7 @@ class WhaleSniper:
 
     def get_liquidations(self):
         self._liquidations.clear()
-        timestamp = (self._get_ts() - timedelta(hours=1)).strftime("%Y-%m-%dT%H:%M:%SZ")
-        res = requests.get(f"{LIQUIDATION_API}{timestamp}")
+        res = requests.get(LIQUIDATION_API)
         for i in res.json():
             self._liquidations.append(i)
 
